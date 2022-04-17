@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 8</title>
+</head>
+<body>
+    <script>
+         
+         const notification = [
+
+            {
+                date: '31/07/2019',
+                msg: 'Some message here'
+            },
+            {
+                date: '08/03/2020',
+                msg: 'Happy Womens Day'
+            },
+            {
+                date: '31/12/2000',
+                msg: 'Happy New Year'
+            },
+            {
+                date: '14/02/2021',
+                msg: 'Happy Valentines day'
+            },
+            {
+                date: '24/04/2022',
+                msg: 'Happy Easter'
+            }
+        ];
+
+       
+        function map(func, arr) {
+        const result = [];
+
+            for(let i = 0, len = arr.length; i < len; i++) {
+            result.push(func(arr[i], i, arr));
+            }
+
+        return result;
+        }
+
+
+        function filter(func, arr) {
+        const result = [];
+
+            for(let i = 0, len = arr.length; i < len; i++) {
+            if (func(arr[i], i, arr)) {
+            result.push(arr[i]);
+                }
+            }   
+
+        return result;
+        }
+
+
+        function groupMessages(arr) {
+        const result = {};
+
+            for(let i = 0, len = arr.length; i < len; i++) {
+            if(result[arr[i].date]) {
+            result[arr[i].date].push(arr[i].msg);
+                } else {
+            result[arr[i].date] = [arr[i].msg];
+                }
+            }
+
+        return result;
+        }
+
+       
+        console.log(map(function(item) {return item.msg}, notification));
+        console.log(filter(function(item) {return item.date === '31/07/2019'}, notification));
+        console.log (groupMessages(notification));
+    </script>
+</body>
+</html>
